@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../components/components.dart';
-import '../models/models.dart';
 import '../models/product.dart';
+import 'circle_image.dart';
 
 class ProductTile extends StatelessWidget {
   final Product product;

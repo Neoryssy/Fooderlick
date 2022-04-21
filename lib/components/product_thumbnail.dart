@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../models/basket.dart';
 import '../models/product.dart';
-import 'globals.dart' as globals;
 
 class ProductThumbnail extends StatelessWidget {
   final Product product;
@@ -36,23 +37,26 @@ class ProductThumbnail extends StatelessWidget {
             '${product.price} руб',
             style: Theme.of(context).textTheme.bodyText1,
           ),
-          TextButton(onPressed: () {
-            globals.basket.addProduct(product);
-            showDialog(context: context, builder: (context) {
-              return AlertDialog(
-                title: const Text('Товар добавлен в корзину'),
-                actions: <Widget>[
-                  TextButton(
-                    child: const Text('Ок'),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                ],
-              );
-            });
+          Consumer<BasketModel>(builder: (context, cart, child) {
+            return TextButton(onPressed: () {
+              cart.addProduct(product);
+              showDialog(context: context, builder: (context) {
+                return AlertDialog(
+                  title: const Text('Товар добавлен в корзину'),
+                  actions: <Widget>[
+                    TextButton(
+                      child: const Text('Ок'),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                );
+              });
 
-          }, child: const Text('В корзину'),)
+            }, child: const Text('В корзину'),
+            );
+          })
         ],
       ),
     );

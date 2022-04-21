@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../models/product.dart';
 import 'product_thumbnail.dart';
 
@@ -20,6 +19,7 @@ class ProductsGridView extends StatelessWidget {
         top: 16,
       ),
       child: GridView.builder(
+        shrinkWrap: true,
         itemCount: products.length,
         gridDelegate:
         const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),

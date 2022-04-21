@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
 import 'fooderlich_theme.dart';
 import 'home.dart';
+import 'models/basket.dart';
 
 void main() {
-  runApp(const Fooderlich());
+  runApp(
+    ChangeNotifierProvider(
+        create: (context) => BasketModel(),
+      child: const Fooderlich(),
+    )
+  );
 }
 
 class Fooderlich extends StatelessWidget {

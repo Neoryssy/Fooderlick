@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'basket_product.dart';
 import 'product.dart';
 
-class Basket {
+class BasketModel extends ChangeNotifier {
   Map<String, BasketProduct> products = Map();
 
   void addProduct(Product product) {
@@ -17,20 +17,27 @@ class Basket {
           product.dishImage
       );
     }
+
+    notifyListeners();
   }
-  void removeProduct(Product product) {
-    if (products[product.title] != null) {
-      products[product.title]?.decreaseCount();
-      if (products[product.title]!.count < 1) {deleteProduct(product);}
-    } else {
-      return;
-    }
+  void clearCart() {
+    products.clear();
+
+    notifyListeners();
   }
-  void deleteProduct(Product product) {
-    if (products[product.title] != null) {
-      products.remove(product.title);
-    } else {
-      return;
+  void removeProduct(String title) {
+    if (products[title] != null) {
+      products[title]?.decreaseCount();
+      if (products[title]!.count < 1) {deleteProduct(title);}
     }
+
+    notifyListeners();
+  }
+  void deleteProduct(String title) {
+    if (products[title] != null) {
+      products.remove(title);
+    }
+
+    notifyListeners();
   }
 }

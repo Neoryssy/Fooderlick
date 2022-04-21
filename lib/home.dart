@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'models/product.dart';
 import 'screens/basket_screen.dart';
-import 'screens/explore_screen.dart';
-import 'screens/recipes_screen.dart';
-import 'screens/toBuy_screen.dart';
+import 'screens/products_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -17,7 +14,7 @@ class _HomeState extends State<Home> {
 
   static List<Widget> pages = <Widget>[
     ToBuyScreen(),
-    BasketScreen(),
+    const BasketScreen(),
   ];
 
   void _onItemTapped(int index) {

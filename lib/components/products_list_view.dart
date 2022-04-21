@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-
-import '../components/components.dart';
-import '../models/models.dart';
 import '../models/product.dart';
 import 'products_tile.dart';
 
